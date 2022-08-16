@@ -72,3 +72,7 @@ export const creatureCategoryNames = {
 };
 
 export const zoneCategories = ['land', 'water', 'void'];
+
+
+export const _kParenthesisLeft = '（';
+export const _kParenthesisRight = '）';

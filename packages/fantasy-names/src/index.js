@@ -290,126 +290,126 @@ const common = [
 //   return names;
 // }
 
-const _kNumberBeginSupplement = '路';
-const _kNumberEndSupplement = '式';
+// const _kNumberBeginSupplement = '路';
+// const _kNumberEndSupplement = '式';
 
-function _getSkillName(length, kind, prefix, numfix) {
-  let l = length || 1;
-  let rarity = 'common';
-  if (!length) {
-    let r = _getRarity();
-    if (r.value < rarityValues.rare) {
-      l = 3;
-    } else if (r.value < rarityValues.uncommon) {
-      l = 2;
-    }
-    rarity = r.rarity;
-  } else {
-    if (length > 2) {
-      rarity = 'rare';
-    } else if (length > 1) {
-      rarity = 'uncommon';
-    }
-  }
-  let name = '';
-  for (let i = 0; i < l; ++i) {
-    name += common[Math.floor(Math.random() * common.length)];
-  }
-  let pre = prefix || '';
-  if (!pre && Math.random() < rarityValues.epic) {
-    pre = skillPrefix[Math.floor(Math.random() * skillPrefix.length)];
-  }
-  let n = numfix || '';
-  if (!n && Math.random() < rarityValues.epic) {
-    n = skillNumfix[Math.floor(Math.random() * skillNumfix.length)];
-  }
-  let k = kind || skill[Math.floor(Math.random() * skill.length)];
-  if (Math.random() < 0.5) {
-    name = (n != '' ? n + _kNumberBeginSupplement : '') + pre + name + k;
-  } else {
-    if (k.length > 1) {
-      name = pre + name + k + (n != '' ? n + _kNumberEndSupplement : '');
-    } else {
-      name = pre + name + n + k;
-    }
-  }
-  return { name, rarity };
-}
+// function _getSkillName(length, kind, prefix, numfix) {
+//   let l = length || 1;
+//   let rarity = 'common';
+//   if (!length) {
+//     let r = _getRarity();
+//     if (r.value < rarityValues.rare) {
+//       l = 3;
+//     } else if (r.value < rarityValues.uncommon) {
+//       l = 2;
+//     }
+//     rarity = r.rarity;
+//   } else {
+//     if (length > 2) {
+//       rarity = 'rare';
+//     } else if (length > 1) {
+//       rarity = 'uncommon';
+//     }
+//   }
+//   let name = '';
+//   for (let i = 0; i < l; ++i) {
+//     name += common[Math.floor(Math.random() * common.length)];
+//   }
+//   let pre = prefix || '';
+//   if (!pre && Math.random() < rarityValues.epic) {
+//     pre = skillPrefix[Math.floor(Math.random() * skillPrefix.length)];
+//   }
+//   let n = numfix || '';
+//   if (!n && Math.random() < rarityValues.epic) {
+//     n = skillNumfix[Math.floor(Math.random() * skillNumfix.length)];
+//   }
+//   let k = kind || skill[Math.floor(Math.random() * skill.length)];
+//   if (Math.random() < 0.5) {
+//     name = (n != '' ? n + _kNumberBeginSupplement : '') + pre + name + k;
+//   } else {
+//     if (k.length > 1) {
+//       name = pre + name + k + (n != '' ? n + _kNumberEndSupplement : '');
+//     } else {
+//       name = pre + name + n + k;
+//     }
+//   }
+//   return { name, rarity };
+// }
 
-export function getSkill(number, options) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let name = _getSkillName(
-      options?.length,
-      options?.kind,
-      options?.prefix,
-      options?.numfix
-    );
-    names.push(name);
-  }
-  return names;
-}
+// export function getSkill(number, options) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let name = _getSkillName(
+//       options?.length,
+//       options?.kind,
+//       options?.prefix,
+//       options?.numfix
+//     );
+//     names.push(name);
+//   }
+//   return names;
+// }
 
-export function getBook(number, options) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let skillname = _getSkillName(options?.length, options?.mainkind);
-    let rarity = skillname.rarity;
-    let pre = options?.prefix || '';
-    if (!pre) {
-      if (rarity == 'exotic') {
-        pre =
-          bookPrefix.exotic[
-            Math.floor(Math.random() * bookPrefix.exotic.length)
-          ];
-      } else if (rarity == 'mythic') {
-        pre =
-          bookPrefix.mythic[
-            Math.floor(Math.random() * bookPrefix.mythic.length)
-          ];
-      } else if (rarity == 'legendary') {
-        pre =
-          bookPrefix.legendary[
-            Math.floor(Math.random() * bookPrefix.legendary.length)
-          ];
-      } else if (rarity == 'epic') {
-        pre =
-          bookPrefix.epic[Math.floor(Math.random() * bookPrefix.epic.length)];
-      }
-    }
-    let pk = options?.postkind || '';
-    if (pre && !pk) {
-      pk = book[Math.floor(Math.random() * book.length)];
-    }
-    let post = options?.postfix || '';
-    if (!post) {
-      let r1 = Math.random();
-      let r2 = Math.random();
-      if (r1 < rarityValues.rare && r2 < rarityValues.rare) {
-        post =
-          _kParenthesisLeft +
-          bookPostfix.rare[
-            Math.floor(Math.random() * bookPostfix.rare.length)
-          ] +
-          _kParenthesisRight;
-      } else if (r1 < rarityValues.uncommon && r2 < rarityValues.uncommon) {
-        post =
-          _kParenthesisLeft +
-          bookPostfix.uncommon[
-            Math.floor(Math.random() * bookPostfix.uncommon.length)
-          ] +
-          _kParenthesisRight;
-      }
-    } else {
-      post = _kParenthesisLeft + post + _kParenthesisRight;
-    }
-    names.push({
-      name: _kBookLeft + skillname.name + pre + pk + post + _kBookRight,
-      rarity: rarity,
-    });
-  }
-  return names;
-}
+// export function getBook(number, options) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let skillname = _getSkillName(options?.length, options?.mainkind);
+//     let rarity = skillname.rarity;
+//     let pre = options?.prefix || '';
+//     if (!pre) {
+//       if (rarity == 'exotic') {
+//         pre =
+//           bookPrefix.exotic[
+//             Math.floor(Math.random() * bookPrefix.exotic.length)
+//           ];
+//       } else if (rarity == 'mythic') {
+//         pre =
+//           bookPrefix.mythic[
+//             Math.floor(Math.random() * bookPrefix.mythic.length)
+//           ];
+//       } else if (rarity == 'legendary') {
+//         pre =
+//           bookPrefix.legendary[
+//             Math.floor(Math.random() * bookPrefix.legendary.length)
+//           ];
+//       } else if (rarity == 'epic') {
+//         pre =
+//           bookPrefix.epic[Math.floor(Math.random() * bookPrefix.epic.length)];
+//       }
+//     }
+//     let pk = options?.postkind || '';
+//     if (pre && !pk) {
+//       pk = book[Math.floor(Math.random() * book.length)];
+//     }
+//     let post = options?.postfix || '';
+//     if (!post) {
+//       let r1 = Math.random();
+//       let r2 = Math.random();
+//       if (r1 < rarityValues.rare && r2 < rarityValues.rare) {
+//         post =
+//           _kParenthesisLeft +
+//           bookPostfix.rare[
+//             Math.floor(Math.random() * bookPostfix.rare.length)
+//           ] +
+//           _kParenthesisRight;
+//       } else if (r1 < rarityValues.uncommon && r2 < rarityValues.uncommon) {
+//         post =
+//           _kParenthesisLeft +
+//           bookPostfix.uncommon[
+//             Math.floor(Math.random() * bookPostfix.uncommon.length)
+//           ] +
+//           _kParenthesisRight;
+//       }
+//     } else {
+//       post = _kParenthesisLeft + post + _kParenthesisRight;
+//     }
+//     names.push({
+//       name: _kBookLeft + skillname.name + pre + pk + post + _kBookRight,
+//       rarity: rarity,
+//     });
+//   }
+//   return names;
+// }
 
 const commonCreatureNames = [
   ...commonNames.dao,
@@ -420,142 +420,142 @@ const commonCreatureNames = [
   ...commonNames.action,
 ];
 
-export function getCreature(number, options) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let name = '';
-    let pre =
-      commonCreatureNames[
-        Math.floor(Math.random() * commonCreatureNames.length)
-      ];
-    let c = colorPrefix[Math.floor(Math.random() * colorPrefix.length)];
-    let s = creaturePrefix[Math.floor(Math.random() * creaturePrefix.length)];
-    let cat = options?.category;
-    let k = '';
-    if (!cat) {
-      cat =
-        creatureCategory[Math.floor(Math.random() * creatureCategory.length)];
-    }
-    k = creature[cat][Math.floor(Math.random() * creature[cat].length)];
-    let r = options?.rarity || _getRarity(rarityValues.uncommon).rarity;
-    if (r == 'exotic') {
-      name =
-        strangeCreature[Math.floor(Math.random() * strangeCreature.length)];
-    } else if (r == 'mythic') {
-      name = pre + c + s + k;
-    } else if (r == 'legendary') {
-      name = pre + s + k;
-    } else if (r == 'epic') {
-      name = pre + c + k;
-    } else if (r == 'rare') {
-      name = pre + k;
-    } else if (r == 'uncommon') {
-      name = c + s + k;
-    } else if (r == 'common') {
-      name = c + k;
-    }
-    names.push({ name, rarity: r, category: cat });
-  }
-  return names;
-}
+// export function getCreature(number, options) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let name = '';
+//     let pre =
+//       commonCreatureNames[
+//         Math.floor(Math.random() * commonCreatureNames.length)
+//       ];
+//     let c = colorPrefix[Math.floor(Math.random() * colorPrefix.length)];
+//     let s = creaturePrefix[Math.floor(Math.random() * creaturePrefix.length)];
+//     let cat = options?.category;
+//     let k = '';
+//     if (!cat) {
+//       cat =
+//         creatureCategory[Math.floor(Math.random() * creatureCategory.length)];
+//     }
+//     k = creature[cat][Math.floor(Math.random() * creature[cat].length)];
+//     let r = options?.rarity || _getRarity(rarityValues.uncommon).rarity;
+//     if (r == 'exotic') {
+//       name =
+//         strangeCreature[Math.floor(Math.random() * strangeCreature.length)];
+//     } else if (r == 'mythic') {
+//       name = pre + c + s + k;
+//     } else if (r == 'legendary') {
+//       name = pre + s + k;
+//     } else if (r == 'epic') {
+//       name = pre + c + k;
+//     } else if (r == 'rare') {
+//       name = pre + k;
+//     } else if (r == 'uncommon') {
+//       name = c + s + k;
+//     } else if (r == 'common') {
+//       name = c + k;
+//     }
+//     names.push({ name, rarity: r, category: cat });
+//   }
+//   return names;
+// }
 
 const _kAge1 = '百年';
 const _kAge10 = '千年';
 const _kAge100 = '万年';
 
-export function getMaterial(number, options) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let name = '';
-    let age = '';
-    let pre = common[Math.floor(Math.random() * common.length)];
-    let c = colorPrefix[Math.floor(Math.random() * colorPrefix.length)];
-    let s = spiritPrefix[Math.floor(Math.random() * spiritPrefix.length)];
-    let k = options?.kind;
-    let r = options?.rarity || _getRarity(rarityValues.uncommon).rarity;
-    if (r == 'exotic') {
-      let t = [
-        ...material.exotic,
-        ...material.mythic,
-        ...material.legendary,
-        ...material.epic,
-        ...material.rare,
-        ...material.uncommon,
-        ...material.common,
-      ];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      age = _kAge100;
-      name = age + pre + c + s + k;
-    } else if (r == 'mythic') {
-      let t = [
-        ...material.mythic,
-        ...material.legendary,
-        ...material.epic,
-        ...material.rare,
-        ...material.uncommon,
-        ...material.common,
-      ];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      age = _kAge10;
-      name = age + pre + c + s + k;
-    } else if (r == 'legendary') {
-      let t = [
-        ...material.legendary,
-        ...material.epic,
-        ...material.rare,
-        ...material.uncommon,
-        ...material.common,
-      ];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      age = _kAge1;
-      name = age + pre + c + s + k;
-    } else if (r == 'epic') {
-      let t = [
-        ...material.epic,
-        ...material.rare,
-        ...material.uncommon,
-        ...material.common,
-      ];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = pre + c + s + k;
-    } else if (r == 'rare') {
-      let t = [...material.rare, ...material.uncommon, ...material.common];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = pre + s + k;
-    } else if (r == 'uncommon') {
-      let t = [...material.uncommon, ...material.common];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = c + s + k;
-    } else if (r == 'common') {
-      k ??= material.common[Math.floor(Math.random() * material.common.length)];
-      name = c + k;
-    }
-    let post = options?.postfix || '';
-    if (!post) {
-      let r1 = Math.random();
-      let r2 = Math.random();
-      if (r1 < rarityValues.rare && r2 < rarityValues.rare) {
-        post =
-          _kParenthesisLeft +
-          materialPostfix.broken[
-            Math.floor(Math.random() * materialPostfix.broken.length)
-          ] +
-          _kParenthesisRight;
-      } else if (r1 < rarityValues.uncommon && r2 < rarityValues.uncommon) {
-        post =
-          _kParenthesisLeft +
-          materialPostfix.handmade[
-            Math.floor(Math.random() * materialPostfix.handmade.length)
-          ] +
-          _kParenthesisRight;
-      }
-    } else {
-      post = _kParenthesisLeft + post + _kParenthesisRight;
-    }
-    names.push({ name: name + post, rarity: r });
-  }
-  return names;
-}
+// export function getMaterial(number, options) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let name = '';
+//     let age = '';
+//     let pre = common[Math.floor(Math.random() * common.length)];
+//     let c = colorPrefix[Math.floor(Math.random() * colorPrefix.length)];
+//     let s = spiritPrefix[Math.floor(Math.random() * spiritPrefix.length)];
+//     let k = options?.kind;
+//     let r = options?.rarity || _getRarity(rarityValues.uncommon).rarity;
+//     if (r == 'exotic') {
+//       let t = [
+//         ...material.exotic,
+//         ...material.mythic,
+//         ...material.legendary,
+//         ...material.epic,
+//         ...material.rare,
+//         ...material.uncommon,
+//         ...material.common,
+//       ];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       age = _kAge100;
+//       name = age + pre + c + s + k;
+//     } else if (r == 'mythic') {
+//       let t = [
+//         ...material.mythic,
+//         ...material.legendary,
+//         ...material.epic,
+//         ...material.rare,
+//         ...material.uncommon,
+//         ...material.common,
+//       ];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       age = _kAge10;
+//       name = age + pre + c + s + k;
+//     } else if (r == 'legendary') {
+//       let t = [
+//         ...material.legendary,
+//         ...material.epic,
+//         ...material.rare,
+//         ...material.uncommon,
+//         ...material.common,
+//       ];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       age = _kAge1;
+//       name = age + pre + c + s + k;
+//     } else if (r == 'epic') {
+//       let t = [
+//         ...material.epic,
+//         ...material.rare,
+//         ...material.uncommon,
+//         ...material.common,
+//       ];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = pre + c + s + k;
+//     } else if (r == 'rare') {
+//       let t = [...material.rare, ...material.uncommon, ...material.common];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = pre + s + k;
+//     } else if (r == 'uncommon') {
+//       let t = [...material.uncommon, ...material.common];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = c + s + k;
+//     } else if (r == 'common') {
+//       k ??= material.common[Math.floor(Math.random() * material.common.length)];
+//       name = c + k;
+//     }
+//     let post = options?.postfix || '';
+//     if (!post) {
+//       let r1 = Math.random();
+//       let r2 = Math.random();
+//       if (r1 < rarityValues.rare && r2 < rarityValues.rare) {
+//         post =
+//           _kParenthesisLeft +
+//           materialPostfix.broken[
+//             Math.floor(Math.random() * materialPostfix.broken.length)
+//           ] +
+//           _kParenthesisRight;
+//       } else if (r1 < rarityValues.uncommon && r2 < rarityValues.uncommon) {
+//         post =
+//           _kParenthesisLeft +
+//           materialPostfix.handmade[
+//             Math.floor(Math.random() * materialPostfix.handmade.length)
+//           ] +
+//           _kParenthesisRight;
+//       }
+//     } else {
+//       post = _kParenthesisLeft + post + _kParenthesisRight;
+//     }
+//     names.push({ name: name + post, rarity: r });
+//   }
+//   return names;
+// }
 
 const commonAlchemyNames = [
   ...commonNames.dao,
@@ -565,243 +565,243 @@ const commonAlchemyNames = [
   ...commonNames.action,
 ];
 
-export function getTalisman(number, options) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let name = '';
-    let prefix = common[Math.floor(Math.random() * common.length)];
-    let c = colorPrefix[Math.floor(Math.random() * colorPrefix.length)];
-    let m =
-      talismanMaterial[Math.floor(Math.random() * talismanMaterial.length)];
-    let s = spiritPrefix[Math.floor(Math.random() * spiritPrefix.length)];
-    let k = options?.kind;
-    let r = options?.rarity ?? _getRarity(rarityValues.uncommon).rarity;
-    if (r == 'exotic') {
-      let t = [
-        ...talisman.exotic,
-        ...talisman.mythic,
-        ...talisman.legendary,
-        ...talisman.epic,
-        ...talisman.rare,
-        ...talisman.uncommon,
-        ...talisman.common,
-      ];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = prefix + s + k;
-    } else if (r == 'mythic') {
-      let t = [
-        ...talisman.mythic,
-        ...talisman.legendary,
-        ...talisman.epic,
-        ...talisman.rare,
-        ...talisman.uncommon,
-        ...talisman.common,
-      ];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = prefix + s + k;
-    } else if (r == 'legendary') {
-      let t = [
-        ...talisman.legendary,
-        ...talisman.epic,
-        ...talisman.rare,
-        ...talisman.uncommon,
-        ...talisman.common,
-      ];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = prefix + c + m + k;
-    } else if (r == 'epic') {
-      let t = [
-        ...talisman.epic,
-        ...talisman.rare,
-        ...talisman.uncommon,
-        ...talisman.common,
-      ];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = prefix + m + k;
-    } else if (r == 'rare') {
-      let t = [...talisman.rare, ...talisman.uncommon, ...talisman.common];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = prefix + k;
-    } else if (r == 'uncommon') {
-      let t = [...talisman.uncommon, ...talisman.common];
-      k ??= t[Math.floor(Math.random() * t.length)];
-      name = c + m + k;
-    } else if (r == 'common') {
-      k ??= talisman.common[Math.floor(Math.random() * talisman.common.length)];
-      name = m + k;
-    }
-    let post = options?.postfix || '';
-    if (!post) {
-      let r1 = Math.random();
-      let r2 = Math.random();
-      if (r1 < rarityValues.rare && r2 < rarityValues.rare) {
-        post =
-          _kParenthesisLeft +
-          talismanPostfix.broken[
-            Math.floor(Math.random() * talismanPostfix.broken.length)
-          ] +
-          _kParenthesisRight;
-      } else if (r1 < rarityValues.uncommon && r2 < rarityValues.uncommon) {
-        post =
-          _kParenthesisLeft +
-          talismanPostfix.handmade[
-            Math.floor(Math.random() * talismanPostfix.handmade.length)
-          ] +
-          _kParenthesisRight;
-      }
-    } else {
-      post = _kParenthesisLeft + post + _kParenthesisRight;
-    }
-    names.push({ name: name + post, rarity: r });
-  }
-  return names;
-}
+// export function getTalisman(number, options) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let name = '';
+//     let prefix = common[Math.floor(Math.random() * common.length)];
+//     let c = colorPrefix[Math.floor(Math.random() * colorPrefix.length)];
+//     let m =
+//       talismanMaterial[Math.floor(Math.random() * talismanMaterial.length)];
+//     let s = spiritPrefix[Math.floor(Math.random() * spiritPrefix.length)];
+//     let k = options?.kind;
+//     let r = options?.rarity ?? _getRarity(rarityValues.uncommon).rarity;
+//     if (r == 'exotic') {
+//       let t = [
+//         ...talisman.exotic,
+//         ...talisman.mythic,
+//         ...talisman.legendary,
+//         ...talisman.epic,
+//         ...talisman.rare,
+//         ...talisman.uncommon,
+//         ...talisman.common,
+//       ];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = prefix + s + k;
+//     } else if (r == 'mythic') {
+//       let t = [
+//         ...talisman.mythic,
+//         ...talisman.legendary,
+//         ...talisman.epic,
+//         ...talisman.rare,
+//         ...talisman.uncommon,
+//         ...talisman.common,
+//       ];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = prefix + s + k;
+//     } else if (r == 'legendary') {
+//       let t = [
+//         ...talisman.legendary,
+//         ...talisman.epic,
+//         ...talisman.rare,
+//         ...talisman.uncommon,
+//         ...talisman.common,
+//       ];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = prefix + c + m + k;
+//     } else if (r == 'epic') {
+//       let t = [
+//         ...talisman.epic,
+//         ...talisman.rare,
+//         ...talisman.uncommon,
+//         ...talisman.common,
+//       ];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = prefix + m + k;
+//     } else if (r == 'rare') {
+//       let t = [...talisman.rare, ...talisman.uncommon, ...talisman.common];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = prefix + k;
+//     } else if (r == 'uncommon') {
+//       let t = [...talisman.uncommon, ...talisman.common];
+//       k ??= t[Math.floor(Math.random() * t.length)];
+//       name = c + m + k;
+//     } else if (r == 'common') {
+//       k ??= talisman.common[Math.floor(Math.random() * talisman.common.length)];
+//       name = m + k;
+//     }
+//     let post = options?.postfix || '';
+//     if (!post) {
+//       let r1 = Math.random();
+//       let r2 = Math.random();
+//       if (r1 < rarityValues.rare && r2 < rarityValues.rare) {
+//         post =
+//           _kParenthesisLeft +
+//           talismanPostfix.broken[
+//             Math.floor(Math.random() * talismanPostfix.broken.length)
+//           ] +
+//           _kParenthesisRight;
+//       } else if (r1 < rarityValues.uncommon && r2 < rarityValues.uncommon) {
+//         post =
+//           _kParenthesisLeft +
+//           talismanPostfix.handmade[
+//             Math.floor(Math.random() * talismanPostfix.handmade.length)
+//           ] +
+//           _kParenthesisRight;
+//       }
+//     } else {
+//       post = _kParenthesisLeft + post + _kParenthesisRight;
+//     }
+//     names.push({ name: name + post, rarity: r });
+//   }
+//   return names;
+// }
 
-export function getAlchemy(number, kind) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let rarity = 'common';
-    let pre =
-      commonAlchemyNames[Math.floor(Math.random() * commonAlchemyNames.length)];
-    let s = '';
-    let r = _getRarity();
-    if (r.value < rarityValues.rare) {
-      s = spiritPrefix[Math.floor(Math.random() * spiritPrefix.length)];
-    }
-    rarity = r.rarity;
-    let k = kind || '';
-    if (!kind) {
-      k = alchemy[Math.floor(Math.random() * alchemy.length)];
-    }
-    names.push({ name: pre + s + k, rarity });
-  }
-  return names;
-}
+// export function getAlchemy(number, kind) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let rarity = 'common';
+//     let pre =
+//       commonAlchemyNames[Math.floor(Math.random() * commonAlchemyNames.length)];
+//     let s = '';
+//     let r = _getRarity();
+//     if (r.value < rarityValues.rare) {
+//       s = spiritPrefix[Math.floor(Math.random() * spiritPrefix.length)];
+//     }
+//     rarity = r.rarity;
+//     let k = kind || '';
+//     if (!kind) {
+//       k = alchemy[Math.floor(Math.random() * alchemy.length)];
+//     }
+//     names.push({ name: pre + s + k, rarity });
+//   }
+//   return names;
+// }
 
-export function getClan(number, kind) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let name = common[Math.floor(Math.random() * common.length)];
-    let k = kind;
-    if (!k) {
-      k = clan[Math.floor(Math.random() * clan.length)];
-    }
-    names.push(name + k);
-  }
-  return names;
-}
+// export function getClan(number, kind) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let name = common[Math.floor(Math.random() * common.length)];
+//     let k = kind;
+//     if (!k) {
+//       k = clan[Math.floor(Math.random() * clan.length)];
+//     }
+//     names.push(name + k);
+//   }
+//   return names;
+// }
 
 const _kContry = '国';
 
-export function getNation(number, kind) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let name = '';
-    let k = kind ?? '';
-    let rarity = 'common';
-    let r = Math.random();
-    if (r < rarityValues.rare) {
-      name = strangeNames[Math.floor(Math.random() * strangeNames.length)];
-      rarity = 'rare';
-      if (!kind) {
-        if (name.length == 1) {
-          k = _kContry;
-        } else {
-          k = nation[Math.floor(Math.random() * nation.length)];
-        }
-      }
-    } else if (r < rarityValues.uncommon) {
-      name = common[Math.floor(Math.random() * common.length)];
-      rarity = 'uncommon';
-      if (!kind) {
-        if (name.length == 1) {
-          k = _kContry;
-        } else {
-          k = nation[Math.floor(Math.random() * nation.length)];
-        }
-      }
-    } else {
-      let prefix = '';
-      if (Math.random() < rarityValues.rare) {
-        prefix = placePrefix[Math.floor(Math.random() * placePrefix.length)];
-      }
-      name = prefix + place[Math.floor(Math.random() * place.length)];
-      if (!kind) {
-        k = _kContry;
-      }
-    }
-    names.push({ name: name + k, rarity });
-  }
-  return names;
-}
+// export function getNation(number, kind) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let name = '';
+//     let k = kind ?? '';
+//     let rarity = 'common';
+//     let r = Math.random();
+//     if (r < rarityValues.rare) {
+//       name = strangeNames[Math.floor(Math.random() * strangeNames.length)];
+//       rarity = 'rare';
+//       if (!kind) {
+//         if (name.length == 1) {
+//           k = _kContry;
+//         } else {
+//           k = nation[Math.floor(Math.random() * nation.length)];
+//         }
+//       }
+//     } else if (r < rarityValues.uncommon) {
+//       name = common[Math.floor(Math.random() * common.length)];
+//       rarity = 'uncommon';
+//       if (!kind) {
+//         if (name.length == 1) {
+//           k = _kContry;
+//         } else {
+//           k = nation[Math.floor(Math.random() * nation.length)];
+//         }
+//       }
+//     } else {
+//       let prefix = '';
+//       if (Math.random() < rarityValues.rare) {
+//         prefix = placePrefix[Math.floor(Math.random() * placePrefix.length)];
+//       }
+//       name = prefix + place[Math.floor(Math.random() * place.length)];
+//       if (!kind) {
+//         k = _kContry;
+//       }
+//     }
+//     names.push({ name: name + k, rarity });
+//   }
+//   return names;
+// }
 
-export function getLocation(number, kind) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let name = '';
-    let k = kind ?? '';
-    let rarity = 'common';
-    let r = Math.random();
-    if (r < rarityValues.rare) {
-      name = strangeNames[Math.floor(Math.random() * strangeNames.length)];
-      rarity = 'rare';
-    } else if (r < rarityValues.uncommon) {
-      name = common[Math.floor(Math.random() * common.length)];
-      rarity = 'uncommon';
-    } else {
-      let placeIndex = Math.floor(Math.random() * place.length);
-      let postfix = '';
-      if (Math.random() < rarityValues.uncommon) {
-        let postfixIndex = Math.floor(Math.random() * placePostfix.length);
-        postfix = placePostfix[postfixIndex];
-      }
-      name = place[placeIndex] + postfix;
-    }
-    if (!kind) {
-      k = location[Math.floor(Math.random() * location.length)];
-    }
-    names.push({ name: name + k, rarity });
-  }
-  return names;
-}
+// export function getLocation(number, kind) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let name = '';
+//     let k = kind ?? '';
+//     let rarity = 'common';
+//     let r = Math.random();
+//     if (r < rarityValues.rare) {
+//       name = strangeNames[Math.floor(Math.random() * strangeNames.length)];
+//       rarity = 'rare';
+//     } else if (r < rarityValues.uncommon) {
+//       name = common[Math.floor(Math.random() * common.length)];
+//       rarity = 'uncommon';
+//     } else {
+//       let placeIndex = Math.floor(Math.random() * place.length);
+//       let postfix = '';
+//       if (Math.random() < rarityValues.uncommon) {
+//         let postfixIndex = Math.floor(Math.random() * placePostfix.length);
+//         postfix = placePostfix[postfixIndex];
+//       }
+//       name = place[placeIndex] + postfix;
+//     }
+//     if (!kind) {
+//       k = location[Math.floor(Math.random() * location.length)];
+//     }
+//     names.push({ name: name + k, rarity });
+//   }
+//   return names;
+// }
 
-function getZoneKind(category) {
-  category ??=
-    zoneCategories[Math.floor(Math.random() * zoneCategories.length)];
-  let group = zone[category];
-  return group[Math.floor(Math.random() * group.length)];
-}
+// function getZoneKind(category) {
+//   category ??=
+//     zoneCategories[Math.floor(Math.random() * zoneCategories.length)];
+//   let group = zone[category];
+//   return group[Math.floor(Math.random() * group.length)];
+// }
 
-export function getZone(number, options) {
-  let names = [];
-  for (let i = 0; i < number; ++i) {
-    let name = '';
-    let k = options?.kind ?? getZoneKind(options?.category);
-    let rarity = 'common';
-    let r = Math.random();
-    if (r < rarityValues.rare) {
-      name = strangeNames[Math.floor(Math.random() * strangeNames.length)];
-      rarity = 'rare';
-    } else if (r < rarityValues.uncommon) {
-      name = common[Math.floor(Math.random() * common.length)];
-      rarity = 'uncommon';
-    } else {
-      let prefix = '';
-      if (Math.random() < rarityValues.rare) {
-        prefix = placePrefix[Math.floor(Math.random() * placePrefix.length)];
-      }
-      name = prefix + place[Math.floor(Math.random() * place.length)];
-      if (name.length == 1) {
-        if (k.length > 1) {
-          name += _kLinkWord;
-        } else {
-          if (Math.random() < rarityValues.rare) {
-            name += _kLinkWord;
-          }
-        }
-      }
-    }
-    names.push({ name: name + k, rarity });
-  }
-  return names;
-}
+// export function getZone(number, options) {
+//   let names = [];
+//   for (let i = 0; i < number; ++i) {
+//     let name = '';
+//     let k = options?.kind ?? getZoneKind(options?.category);
+//     let rarity = 'common';
+//     let r = Math.random();
+//     if (r < rarityValues.rare) {
+//       name = strangeNames[Math.floor(Math.random() * strangeNames.length)];
+//       rarity = 'rare';
+//     } else if (r < rarityValues.uncommon) {
+//       name = common[Math.floor(Math.random() * common.length)];
+//       rarity = 'uncommon';
+//     } else {
+//       let prefix = '';
+//       if (Math.random() < rarityValues.rare) {
+//         prefix = placePrefix[Math.floor(Math.random() * placePrefix.length)];
+//       }
+//       name = prefix + place[Math.floor(Math.random() * place.length)];
+//       if (name.length == 1) {
+//         if (k.length > 1) {
+//           name += _kLinkWord;
+//         } else {
+//           if (Math.random() < rarityValues.rare) {
+//             name += _kLinkWord;
+//           }
+//         }
+//       }
+//     }
+//     names.push({ name: name + k, rarity });
+//   }
+//   return names;
+// }
