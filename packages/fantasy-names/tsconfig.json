@@ -3,6 +3,8 @@
   "include": [ "**/*.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "outDir": "lib",
+    "declarationDir": "lib"
   }
 }
