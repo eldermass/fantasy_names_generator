@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { numberOptions, clan } from 'fantasy-names'
+import { numberOptions, clan } from '@chenxuanyu/fantasy-names'
 
 
 const clanOptions = ["随机"].concat(clan)

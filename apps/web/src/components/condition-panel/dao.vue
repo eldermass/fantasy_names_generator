@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { sexOptions, numberOptions, daoMaleStrings, daoFemaleStrings, daoTitles } from 'fantasy-names'
+import { sexOptions, numberOptions, daoMaleStrings, daoFemaleStrings, daoTitles } from '@chenxuanyu/fantasy-names'
 
 
 const titleOptions = ["随机"].concat(daoTitles)

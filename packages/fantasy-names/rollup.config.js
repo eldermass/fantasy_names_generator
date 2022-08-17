@@ -30,11 +30,6 @@ export default defineConfig({
             format: "es",
         },
         {
-            file: 'lib/index.js',
-            format: "umd",
-            name: libName,
-        },
-        {
             file: `lib/index.umd.js`,
             // 通用格式可以用于node和browser等多个场景
             format: "umd",

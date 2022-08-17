@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { sexOptions, numberOptions } from 'fantasy-names'
+import { sexOptions, numberOptions } from '@chenxuanyu/fantasy-names'
 
 const styleOptions = [
     { text: '随机', value: null },

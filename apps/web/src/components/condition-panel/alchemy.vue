@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import ConditionItem from './condition-item.vue'
 import generator from './generate-result'
-import { numberOptions, alchemy as alchemyKind } from 'fantasy-names'
+import { numberOptions, alchemy as alchemyKind } from '@chenxuanyu/fantasy-names'
 
 const alchemyOptions = ["随机"].concat(alchemyKind)
 

@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { numberOptions, zoneStrings, zoneCategories } from 'fantasy-names'
+import { numberOptions, zoneStrings, zoneCategories } from '@chenxuanyu/fantasy-names'
 
 const cateNames = ['陆', '水', '空']
 const zoneOptions = ["随机"].concat(zoneStrings)

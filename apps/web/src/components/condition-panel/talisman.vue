@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { numberOptions, materialStrings, rarityOptions, talismanPostfixStrings, talismanStrings } from 'fantasy-names'
+import { numberOptions, materialStrings, rarityOptions, talismanPostfixStrings, talismanStrings } from '@chenxuanyu/fantasy-names'
 
 const talismanOptions = ["随机"].concat(talismanStrings)
 const talismanPostfixOptions = ["随机"].concat(talismanPostfixStrings)

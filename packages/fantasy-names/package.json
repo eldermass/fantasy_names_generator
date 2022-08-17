@@ -1,24 +1,37 @@
 {
-  "name": "fantasy-names",
-  "version": "1.0.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "license": "MIT",
-  "scripts": {
-    "build": "rimraf -rf ./dist && rollup --config"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.18.10",
-    "@babel/preset-env": "^7.18.10",
-    "@babel/preset-typescript": "^7.18.6",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.4",
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
-    "rollup": "^2.78.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "tsconfig": "*",
-    "typescript": "^4.5.2"
-  }
+    "name": "@chenxuanyu/fantasy-names",
+    "version": "1.0.1",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "author": "chenxuanyu",
+    "license": "MIT",
+    "exports": {
+        ".": {
+            "import": "./lib/index.es.js",
+            "require": "./lib/index.cjs.js",
+            "default": "./lib/index.umd.js"
+        }
+    },
+    "scripts": {
+        "build": "rimraf -rf ./lib && rollup --config"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.18.10",
+        "@babel/preset-env": "^7.18.10",
+        "@babel/preset-typescript": "^7.18.6",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^13.3.0",
+        "@rollup/plugin-typescript": "^8.3.4",
+        "eslint": "^7.32.0",
+        "eslint-config-custom": "*",
+        "rollup": "^2.78.0",
+        "rollup-plugin-babel": "^4.4.0",
+        "tsconfig": "*",
+        "typescript": "^4.5.2"
+    },
+    "files": [
+        "lib",
+        "src"
+    ],
+    "keywords": ["generator", "fantasy", "names"]
 }

@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { skill as skillKind, lengthValues, numberOptions, bookPrefixStrings, bookPostfixStrings, book as bookKind } from 'fantasy-names'
+import { skill as skillKind, lengthValues, numberOptions, bookPrefixStrings, bookPostfixStrings, book as bookKind } from '@chenxuanyu/fantasy-names'
 
 
 const bookPrefixOptions = ["随机"].concat(bookPrefixStrings)

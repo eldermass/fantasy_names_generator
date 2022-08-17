@@ -1,7 +1,7 @@
 {
   "extends": "tsconfig/base.json",
   "include": [ "**/*.ts"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "lib"],
   "compilerOptions": {
     "resolveJsonModule": true,
     "outDir": "lib",

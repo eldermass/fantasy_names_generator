@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { numberOptions, materialStrings, rarityOptions, materialPostfixStrings } from 'fantasy-names'
+import { numberOptions, materialStrings, rarityOptions, materialPostfixStrings } from '@chenxuanyu/fantasy-names'
 
 const materialPostfixOptions = ["随机"].concat(materialPostfixStrings)
 const materialOptions = ["随机"].concat(materialStrings)

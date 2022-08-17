@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { numberOptions, lengthValues, skillPrefix, skillNumfix, skill as skillKind } from 'fantasy-names'
+import { numberOptions, lengthValues, skillPrefix, skillNumfix, skill as skillKind } from '@chenxuanyu/fantasy-names'
 
 const skillPrefixOptions = ['随机'].concat(skillPrefix)
 const skillNumfixOptions = ['随机'].concat(skillNumfix)

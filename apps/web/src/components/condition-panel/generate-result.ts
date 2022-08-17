@@ -1,6 +1,6 @@
 import { useResultStore } from '@/stores/results'
 import type { Ref } from 'vue'
-import { getName, getDao, getSkill, getBook, getMaterial, getAlchemy, getTalisman, getCreature, getClan, getNation, getLocation, getZone } from 'fantasy-names'
+import { getName, getDao, getSkill, getBook, getMaterial, getAlchemy, getTalisman, getCreature, getClan, getNation, getLocation, getZone } from '@chenxuanyu/fantasy-names'
 
 export default function generator(type: string, params?: { [prop: string]: Ref }) {
     const store = useResultStore()

@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ConditionItem from './condition-item.vue';
 import generator from './generate-result'
-import { numberOptions, creatureCategory, creatureCategoryNames, rarityNames, rarityLevels } from 'fantasy-names'
+import { numberOptions, creatureCategory, creatureCategoryNames, rarityNames, rarityLevels } from '@chenxuanyu/fantasy-names'
 
 interface Item {
     value: string | null; 
