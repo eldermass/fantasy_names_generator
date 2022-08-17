@@ -2,7 +2,6 @@ import names from '../data/name/index'
 const { family, female, male, middle } = names
 
 export function getName(number: number, options?: { familyName?: string; isFemale?: boolean; style?: 'single' | 'double' | 'combine'; middleCharacter?: string; }) {
-    console.log(options)
     let names = [];
     for (let i = 0; i < number; ++i) {
         let theFamilyName;
