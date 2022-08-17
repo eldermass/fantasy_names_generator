@@ -3,6 +3,7 @@
 body {
   background: url(./bg.jpg) no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 #app {

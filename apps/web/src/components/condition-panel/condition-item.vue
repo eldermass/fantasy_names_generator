@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { withDefaults, ref } from 'vue'
+import { withDefaults } from 'vue'
 
 // props
 withDefaults(
@@ -19,7 +19,6 @@ withDefaults(
 const emits = defineEmits(['update:value', 'change'])
 
 // data
-const value1 = ref()
 
 // methods
 const handleChange = (value: string) => {
@@ -30,7 +29,7 @@ const handleChange = (value: string) => {
 <template>
     <div class="condition-item">
         <span class="title">{{ title }}: </span>
-        <a-select v-model:value="value" style="width: 120px" @change="handleChange">
+        <a-select :value="value" style="width: 120px" @change="handleChange">
             <a-select-option v-for="(item, index) in optionList" :key="index"
                 :value="type === 'string' ? item : item.value">
                 {{ type === 'string' ? item : item.text }}
