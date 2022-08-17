@@ -3,14 +3,22 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "module": "./src/index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "npx babel src --out-dir commonjs"
+    "build": "rimraf -rf ./dist && rollup --config"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.4",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
+    "rollup": "^2.78.0",
+    "rollup-plugin-babel": "^4.4.0",
     "tsconfig": "*",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/core": "^7.18.10"
   }
 }
