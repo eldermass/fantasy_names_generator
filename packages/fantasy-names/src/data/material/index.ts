@@ -2,9 +2,14 @@
 import material from './material.json'
 import materialPostfix from './postfix.json'
 
+const materialPostfixStrings = Object.values(materialPostfix).flat(1)
+const materialStrings = Object.values(material).flat(1)
+
 export {
     material,
-    materialPostfix
+    materialPostfix,
+    materialStrings,
+    materialPostfixStrings
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

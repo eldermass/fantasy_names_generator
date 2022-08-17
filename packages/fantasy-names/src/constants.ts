@@ -11,6 +11,8 @@ export const numberOptions = [
   { text: 100, value: 100 },
 ]
 
+export const lengthValues = ['随机', 1, 2, 3]
+
 export const rarityColors = {
   common: '#CCCCCC',
   uncommon: '#222A35',
@@ -50,6 +52,17 @@ export const rarityNames = {
   mythic: '灵宝',
   exotic: '古宝',
 };
+
+interface Item {
+  value: string | null; 
+  text: string;
+}
+export const rarityOptions: Item[] = rarityLevels.map(item => ({
+  value: item,
+  text: rarityNames[item as keyof typeof rarityNames]
+}))
+rarityOptions.unshift({ value: null, text: "随机" })
+
 
 export const creatureCategory = [
   'plant',

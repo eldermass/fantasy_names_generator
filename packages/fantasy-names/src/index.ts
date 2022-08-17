@@ -15,6 +15,7 @@ export { getZone } from './part/zone'
 export {
     sexOptions,
     numberOptions,
+    lengthValues,
     rarityValues,
     rarityColors,
     rarityLevels,
@@ -22,6 +23,7 @@ export {
     creatureCategory,
     creatureCategoryNames,
     zoneCategories,
+    rarityOptions
 } from './constants'
 
 export {
@@ -29,3 +31,39 @@ export {
     daoFemaleStrings,
     daoTitles
 } from './data/dao/index'
+
+export {
+    skill,
+    skillPrefix,
+    skillNumfix
+} from './data/skill'
+
+export {
+    book,
+    bookPostfix,
+    bookPrefix,
+    bookPrefixStrings,
+    bookPostfixStrings
+} from './data/book'
+
+export { material, materialPostfix, materialPostfixStrings, materialStrings } from './data/material'
+
+export {
+    creature,
+    creaturePrefix,
+    strangeCreature
+} from './data/creature'
+
+export { alchemy } from './data/alchemy'
+
+export {
+    talisman,
+    talismanPostfix,
+    talismanMaterial,
+    talismanStrings,
+    talismanPostfixStrings
+} from './data/talisman'
+
+export { clan, nation } from './data/organization'
+
+export { location, zoneStrings } from './data/place'

@@ -6,6 +6,7 @@ import placePostfix from './postfix.json'
 import placePrefix from './prefix.json'
 import zone from './zone.json'
 
+const zoneStrings = Object.values(zone).flat(1)
 
 export {
     continent,
@@ -13,7 +14,8 @@ export {
     place,
     placePostfix,
     placePrefix,
-    zone
+    zone,
+    zoneStrings
 }
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

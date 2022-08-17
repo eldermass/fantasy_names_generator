@@ -7,9 +7,20 @@ defineProps<{
 <script lang="ts">
 import Name from './name.vue'
 import Dao from './dao.vue'
+import Skill from './skill.vue'
+import Book from './book.vue'
+import Creature from './creature.vue'
+import Material from './material.vue'
+import Alchemy from './alchemy.vue'
+import Talisman from './talisman.vue'
+import Clan from './clan.vue'
+import Nation from './nation.vue'
+import Location from './location.vue'
+import Zone from './zone.vue'
 
+// 'name', 'dao', 'skill', 'book', 'creature', 'material', 'alchemy', 'talisman', 'clan', 'nation', 'location', 'zone'
 export default {
-    components: { Name, Dao }
+    components: { Name, Dao, Skill, Book, Creature, Material, Alchemy, Talisman, Clan, Nation, Location, Zone }
 }
 </script>
 
