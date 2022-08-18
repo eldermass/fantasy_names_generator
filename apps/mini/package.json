@@ -45,7 +45,10 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-alpha-3040820220424001",
     "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3040820220424001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3040820220424001",
+    "@dcloudio/uni-ui": "^1.4.20",
     "pinia": "^2.0.18",
+    "sass": "^1.54.4",
+    "sass-loader": "^13.0.2",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.9",
     "vuex": "^4.0.2"
