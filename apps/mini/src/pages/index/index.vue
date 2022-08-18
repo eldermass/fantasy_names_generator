@@ -4,9 +4,9 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
-    <uni-badge text="1"></uni-badge>
-    <uni-badge text="2" type="success"></uni-badge>
-    <uni-badge text="3" type="primary" :inverted="true"></uni-badge>
+    <uni-card>
+      <text>这是一个基础卡片示例，内容较少，此示例展示了一个没有任何属性不带阴影的卡片。</text>
+    </uni-card>
   </view>
 </template>
 
@@ -14,6 +14,12 @@
 import { ref } from 'vue'
 const title = ref('Hello')
 
+</script>
+<script lang="ts">
+import uniCard from '../../components/uni-card/uni-card.vue'
+export default {
+  components: { uniCard }
+}
 </script>
 
 <style>
