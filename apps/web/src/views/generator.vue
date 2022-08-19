@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import ConditionPanel from '@/components/condition-panel'
 import ResultPanel from '@/components/result-panel'
+import weappCode from '@/components/weapp-code'
 
 // data
 const key = ref<string>('name')
@@ -37,6 +38,7 @@ const list = [
         </a-radio-group>
         <condition-panel :tab-key="key" />
         <result-panel />
+        <weapp-code />
     </div>
 </template>
 
