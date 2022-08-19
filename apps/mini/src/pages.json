@@ -10,7 +10,7 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "名词生成器",
-		"navigationBarBackgroundColor": "rgb(178 200 224)",
+		"navigationBarBackgroundColor": "#B2C8E0",
 		"backgroundColor": "#F8F8F8"
 	},
 	"easycom": {

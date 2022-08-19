@@ -1,0 +1,1 @@
+<view class="condition-item"><label class="title">{{a}}: </label><picker mode="selector" bindchange="{{b}}" value="{{c}}" range-key="label" range="{{d}}"><view class="uni-input" style="color:#FB231F">11111</view></picker></view>

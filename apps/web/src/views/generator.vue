@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import ConditionPanel from '@/components/condition-panel'
 import ResultPanel from '@/components/result-panel'
 

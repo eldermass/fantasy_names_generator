@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "condition-item": "./condition-item",
+    "cy-input": "../cy-input/cy-input"
+  }
+}

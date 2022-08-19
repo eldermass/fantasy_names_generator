@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "名词生成器",
+    "navigationBarBackgroundColor": "#B2C8E0",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

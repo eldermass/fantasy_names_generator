@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "名词生成器",
+  "usingComponents": {
+    "uni-grid-item": "../../components/uni-grid-item/uni-grid-item",
+    "uni-grid": "../../components/uni-grid/uni-grid",
+    "result-panel": "../../view-components/result/result-panel",
+    "condition-panel": "../../view-components/conditions/conditions"
+  }
+}

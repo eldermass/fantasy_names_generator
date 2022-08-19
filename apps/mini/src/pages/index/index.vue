@@ -1,48 +1,89 @@
 <template>
   <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
+    <view class="grid-container">
+      <uni-grid :column="6" borderColor="#a9cecf" @change="handleTouch">
+        <uni-grid-item v-for="(item, index) in list" :index="index" :key="item.value">
+          <view :class="select === item.value ? 'grid-item-box grid-item-box-active' : 'grid-item-box'">
+            <text class="text">{{ item.label }}</text>
+          </view>
+        </uni-grid-item>
+      </uni-grid>
+      <condition-panel :tab-key="select" />
+      <result-panel />
     </view>
-    <uni-card>
-      <text>这是一个基础卡片示例，内容较少，此示例展示了一个没有任何属性不带阴影的卡片。</text>
-    </uni-card>
   </view>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-const title = ref('Hello')
+
+type selectKey = (typeof list)[number]['value']
+
+const list = [
+  { value: 'name', label: '人名' },
+  { value: 'dao', label: '法号' },
+  { value: 'skill', label: '功法' },
+  { value: 'book', label: '秘籍' },
+  { value: 'creature', label: '生灵' },
+  { value: 'material', label: '材料' },
+  { value: 'alchemy', label: '丹药' },
+  { value: 'talisman', label: '法宝' },
+  { value: 'clan', label: '门派' },
+  { value: 'nation', label: '国家' },
+  { value: 'location', label: '据点' },
+  { value: 'zone', label: '地域' },
+] as const
+
+// data
+const select = ref<selectKey>('name')
+
+// methods
+const handleTouch = (e: { detail: { index: number }}) => {
+  const item = list[e.detail.index]
+  select.value = item.value
+}
 
 </script>
 <script lang="ts">
-import uniCard from '../../components/uni-card/uni-card.vue'
+import uniGrid from '../../components/uni-grid/uni-grid.vue'
+import resultPanel from '../../view-components/result/result-panel.vue'
+import conditionPanel from '../../view-components/conditions/conditions.vue'
+
 export default {
-  components: { uniCard }
+  components: { uniGrid, resultPanel, conditionPanel },
 }
 </script>
 
-<style>
+<style lang="scss">
 .content {
   height: 100vh;
   width: 750rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: url(../../static/bg.jpg) no-repeat;
+  background: url(http://rgtezmpw4.hn-bkt.clouddn.com/bg.jpg) no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  border: 1px solid;
-}
 
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
+  .grid-container {
+    margin-top: 50rpx;
+    text-align: center;
+    width: 650rpx;
+    .grid-item-box {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: #444;
+    }
+    .grid-item-box-active {
+      background: url(http://rgtezmpw4.hn-bkt.clouddn.com/1.png) no-repeat;
+      background-size: 100% 100%;
+      color: saddlebrown;
+    }
+  }
 }
 
 .text-area {
