@@ -6,7 +6,7 @@ export default function generator(type: string, params?: { [prop: string]: Ref }
     const store = useResultStore()
 
     const generateResult = () => {
-        console.log(type, Object.values(params).map(item => item.value))
+        // console.log(type, Object.values(params).map(item => item.value))
         let result: (string | { name: string; rarity: string; })[] = []
         switch (type) {
             case 'name':
