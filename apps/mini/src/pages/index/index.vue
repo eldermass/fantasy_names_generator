@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app'
 
 type selectKey = (typeof list)[number]['value']
 
@@ -42,6 +43,20 @@ const handleTouch = (e: { detail: { index: number }}) => {
   const item = list[e.detail.index]
   select.value = item.value
 }
+
+onShareAppMessage(() => {
+  return {
+    title: "非仙非侠",
+    path: "pages/index/index",
+    imageUrl: "http://rgtezmpw4.hn-bkt.clouddn.com/bg.jpg",
+  }
+})
+
+onShareTimeline(() => {
+  return {
+    imageUrl: 'http://rgtezmpw4.hn-bkt.clouddn.com/bg.jpg'
+  }
+})
 
 </script>
 <script lang="ts">

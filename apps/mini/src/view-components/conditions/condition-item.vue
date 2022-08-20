@@ -15,9 +15,9 @@ const props = withDefaults(
 }
 )
 
-onMounted(() => {
-    console.log(props.optionList)
-})
+// onMounted(() => {
+//     console.log(props.optionList)
+// })
 
 // emits
 const emits = defineEmits(['update:value', 'change'])
